@@ -51,9 +51,7 @@ With hands-on expertise in network, web, and infrastructure security, I deliver 
 - 🛰️ Advanced Persistent Threat Simulation  
 - 🧪 Zero-Day Research & Exploit Development  
 
-## 🌐 Connect with Me
-- 💼 [LinkedIn](https://linkedin.com/in/YOURUSERNAME)  
-- 📝 [TryHackMe](https://tryhackme.com/p/YOURUSERNAME)  
-- 🎮 [HackTheBox](https://app.hackthebox.com/profile/YOURUSERNAME)  
-- 🔗 [GitHub](https://github.com/YOUR_GITHUB_USERNAME)  
-- 📧 your.email@example.com  
+## 📊 GitHub Analytics
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=tokyonight)  
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_GITHUB_USERNAME&layout=compact&theme=tokyonight)  
+![Streak](https://github-readme-streak-stats.herokuapp.com/?user=YOUR_GITHUB_USERNAME&theme=tokyonight)  
