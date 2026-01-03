@@ -1,52 +1,93 @@
-# 👨‍💻 Hi, I'm Hesham 
+# 👨‍💻 Hesham
 
-🔒 Cybersecurity Specialist | 🛡️ Red Team Operator | 🕵️ Ethical Hacker | 💻 Security Researcher  
-
----
-
-## 🚀 About Me
-I am a Cybersecurity Specialist focused on Red Teaming, Penetration Testing, and Active Directory Security.
-I help organizations identify vulnerabilities, simulate real-world attacks, and strengthen defenses against advanced threats.
-With hands-on expertise in network, web, and infrastructure security, I deliver clear reports and actionable remediation plans to keep your systems securelation**  
+**Cybersecurity Specialist | Red Team Operator | Ethical Hacker | Security Researcher**
 
 ---
 
-## 🛠️ Skills & Expertise
+## 🚀 Professional Summary
+
+Cybersecurity Specialist with a strong focus on **Red Team operations**, **penetration testing**, and **Active Directory security**. I help organizations identify and exploit real-world weaknesses to accurately measure risk and strengthen their defensive posture. My work emphasizes realistic attack simulations, clear technical reporting, and **actionable remediation guidance** that security and engineering teams can implement effectively.
+
+I have hands-on experience across **network, web, endpoint, and infrastructure security**, with a growing specialization in **enterprise Windows environments and Active Directory attack paths**.
+
+---
+
+## 🛠️ Technical Skills
+
 ### 🔥 Offensive Security
-- **Red Team Engagements** | **Penetration Testing** | **Privilege Escalation** | **AD Exploitation**  
-- Post-Exploitation Frameworks: `Cobalt Strike` | `Sliver` | `Mythic` | `Empire` | `Metasploit`  
-- Recon & Weaponization: `Nmap` | `Burp Suite` | `BloodHound` | `Mimikatz` | `Responder`  
 
-### 💻 Programming / Scripting
-- **Core Languages**: `Python` | `PowerShell` | `Bash` | `C` | `C++` | `C#` | `Go` | `Rust`  
-- **Web & Scripting**: `JavaScript` | `Node.js` | `PHP` | `Ruby` | `Perl`  
-- **Data & Automation**: `SQL` | `NoSQL` | `YAML` | `JSON` | `Regex`  
-- **Malware Dev & Evasion**: Obfuscation, Shellcoding, AV/EDR Bypass  
+* Red Team Engagements & Adversary Simulation
+* Network, Web, and Infrastructure Penetration Testing
+* Privilege Escalation (Windows & Linux)
+* Active Directory Attacks & Abuse
+* Post-Exploitation & Lateral Movement
+
+**Frameworks & Tooling**
+
+* C2 & Post-Exploitation: `Cobalt Strike`, `Sliver`, `Mythic`, `Empire`, `Metasploit`
+* Recon & Exploitation: `Nmap`, `Burp Suite`, `BloodHound`, `Mimikatz`, `Responder`
+
+---
+
+### 💻 Programming & Scripting
+
+**Core Languages**
+
+* `Python`, `PowerShell`, `Bash`
+* `C`, `C++`, `C#`
+* `Go`, `Rust`
+
+**Web & Scripting**
+
+* `JavaScript`, `Node.js`, `PHP`, `Ruby`, `Perl`
+
+**Automation & Data**
+
+* `SQL`, `NoSQL`, `YAML`, `JSON`, `Regex`
+
+**Offensive Development**
+
+* Malware Development Fundamentals
+* Payload Obfuscation & Evasion Techniques
+* Shellcoding & AV/EDR Bypass Concepts
+
+---
 
 ### ☁️ Platforms & Environments
-- **Windows Security** (AD, Kerberos, LAPS, SCCM, Azure AD)  
-- **Linux Security** (Privilege Escalation, Exploit Dev, Post-Exploitation)  
-- **Cloud Security** (AWS | Azure | GCP)  
-- **Container Security** (Docker | Kubernetes | CI/CD Attacks)  
+
+* **Windows Security**: Active Directory, Kerberos, LAPS, SCCM, Azure AD
+* **Linux Security**: Privilege Escalation, Exploit Analysis, Post-Exploitation
+* **Cloud Security**: AWS, Azure, GCP (Identity & Misconfiguration Attacks)
+* **Container & CI/CD Security**: Docker, Kubernetes, Pipeline Abuse
 
 ---
 
-## 🎓 Certifications Roadmap
-- ✅ `CompTIA Security+`  
-- ✅ `eJPT` – Junior Penetration Tester  
-- 🔒 `eCPPTv3` – Advanced Penetration Testing  
-- 🔑 `OSCP` – Offensive Security Certified Professional  
-- 🎯 `CRTP` – Certified Red Team Professional  
-- 🏴‍☠️ `CRTE` – Certified Red Team Expert  
-- 🕵️ `OSEP` – Offensive Security Experienced Penetration Tester  
-- 🧪 `OSED` – Offensive Security Exploit Developer  
+## 🎓 Certifications & Learning Path
 
+* ✅ **CompTIA Security+**
+* ✅ **eJPT** – Junior Penetration Tester
+* 🔒 **eCPPTv3** – Advanced Penetration Testing
+* 🔑 **OSCP** – Offensive Security Certified Professional
+* 🎯 **CRTP** – Certified Red Team Professional (Active Directory)
+* 🏴‍☠️ **CRTE** – Certified Red Team Expert
+* 🕵️ **OSEP** – Offensive Security Experienced Penetration Tester
+* 🧪 **OSED** – Offensive Security Exploit Developer
 
 ---
 
-## 📚 Research Interests
-- 🔑 Kerberos Attacks (Pass-the-Ticket, Golden Ticket, Silver Ticket)  
-- 🧩 Lateral Movement (DCSync, Pass-the-Hash, Shadow Credentials)  
-- 🦠 Malware Development & Obfuscation  
-- 🛰️ Advanced Persistent Threat Simulation  
-- 🧪 Zero-Day Research & Exploit Development  
+## 📚 Research & Technical Interests
+
+* 🔑 Kerberos Attacks: Pass-the-Ticket, Golden Ticket, Silver Ticket
+* 🧩 Lateral Movement & AD Abuse: DCSync, Pass-the-Hash, Shadow Credentials
+* 🦠 Malware Development, Obfuscation & Evasion
+* 🛰️ Advanced Persistent Threat (APT) Simulation
+* 🧪 Vulnerability Research & Exploit Development
+
+---
+
+## 🎯 Professional Focus
+
+* Realistic Red Team operations aligned with modern threat actors
+* Deep specialization in **Active Directory security**
+* Continuous skill development in **exploit development and offensive tooling**
+* Delivering clear, high-impact findings that improve organizational security
