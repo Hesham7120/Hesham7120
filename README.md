@@ -91,3 +91,25 @@ I have hands-on experience across **network, web, endpoint, and infrastructure s
 * Deep specialization in **Active Directory security**
 * Continuous skill development in **exploit development and offensive tooling**
 * Delivering clear, high-impact findings that improve organizational security
+
+---
+
+## 🌐 3D Portfolio Website
+
+This repository now includes an immersive 3D portfolio website with:
+
+* Animated 3D hero scene (Three.js)
+* Lively animated background and motion effects
+* Skills visualization
+* Filterable project showcase
+* Timeline and contact form validation
+* Responsive navigation and theme toggle
+
+### ▶️ Run Locally
+
+```bash
+npm install
+npm run start
+```
+
+Then open `http://localhost:8000`.
