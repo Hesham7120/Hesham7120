@@ -8,7 +8,14 @@
     "lint": "echo \"No lint configured\"",
     "start": "python3 -m http.server 8000"
   },
-  "keywords": ["portfolio", "3d", "cybersecurity"],
+  "keywords": [
+    "portfolio",
+    "3d",
+    "cybersecurity"
+  ],
   "author": "Hesham",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.183.2"
+  }
 }

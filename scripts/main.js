@@ -1,3 +1,5 @@
+import * as THREE from './vendor/three.module.min.js';
+
 const skillsData = [
   { name: "Red Team Operations", level: 95 },
   { name: "Active Directory Security", level: 94 },
@@ -2929,9 +2931,7 @@ function initThreeScene() {
   });
 }
 
-if (window.THREE) {
-  initThreeScene();
-}
+initThreeScene();
 
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
