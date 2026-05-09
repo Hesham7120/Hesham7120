@@ -1,5 +1,5 @@
 from collections import deque
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 
 class InMemoryRateLimiter:
@@ -8,7 +8,7 @@ class InMemoryRateLimiter:
         self._events: dict[str, deque[datetime]] = {}
 
     def allow(self, key: str) -> bool:
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         window_start = now - timedelta(minutes=1)
         q = self._events.setdefault(key, deque())
         while q and q[0] < window_start:
