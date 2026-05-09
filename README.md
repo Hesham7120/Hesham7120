@@ -1,93 +1,183 @@
-# 👨‍💻 Hesham
+# AI Red Team Reporting Assistant
 
-**Cybersecurity Specialist | Red Team Operator | Ethical Hacker | Security Researcher**
+Production-oriented MVP for automated red-team evidence processing and report generation.
 
----
+## 1) Architecture
 
-## 🚀 Professional Summary
+### High-level flow
+1. Upload multiple images from Streamlit frontend.
+2. Backend stores session and metadata in local folders.
+3. Image pipeline standardizes and enhances quality.
+4. OCR extracts text from processed images.
+5. Entity extraction + attack-phase classification produce structured signals.
+6. AI analysis generates strict JSON findings with evidence links.
+7. Human review edits report content before export.
+8. Export pipeline produces Markdown, DOCX, and PDF.
 
-Cybersecurity Specialist with a strong focus on **Red Team operations**, **penetration testing**, and **Active Directory security**. I help organizations identify and exploit real-world weaknesses to accurately measure risk and strengthen their defensive posture. My work emphasizes realistic attack simulations, clear technical reporting, and **actionable remediation guidance** that security and engineering teams can implement effectively.
+### Backend modules
+- `api/`: REST endpoints
+- `services/`: orchestration, storage, AI integration, classification
+- `processors/`: image preprocessing, OCR, entity extraction
+- `report/`: Markdown/DOCX/PDF rendering
+- `schemas/`: request/response validation
+- `utils/`: config, logging, errors, rate limiting
 
-I have hands-on experience across **network, web, endpoint, and infrastructure security**, with a growing specialization in **enterprise Windows environments and Active Directory attack paths**.
+### Reliability controls
+- File-type validation and metadata validation
+- Analyze/export rate limiting
+- Evidence validation and confidence downgrade for unsupported claims
+- Clear error responses and centralized exception handling
 
----
+## 2) Folder structure
 
-## 🛠️ Technical Skills
+```text
+project/
+  backend/
+    app/
+      main.py
+      api/
+      services/
+      processors/
+      models/
+      schemas/
+      utils/
+      report/
+    tests/
+  frontend/
+    streamlit_app.py
+  data/
+    uploads/
+    processed/
+    ocr/
+    reports/
+    templates/
+    sample_workflow/
+.env.example
+README.md
+```
 
-### 🔥 Offensive Security
+## 3) Setup and run
 
-* Red Team Engagements & Adversary Simulation
-* Network, Web, and Infrastructure Penetration Testing
-* Privilege Escalation (Windows & Linux)
-* Active Directory Attacks & Abuse
-* Post-Exploitation & Lateral Movement
+### Prerequisites
+- Python 3.11+
+- Tesseract OCR installed and available in PATH
 
-**Frameworks & Tooling**
+### Install
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r project/requirements.txt
+cp .env.example .env
+```
 
-* C2 & Post-Exploitation: `Cobalt Strike`, `Sliver`, `Mythic`, `Empire`, `Metasploit`
-* Recon & Exploitation: `Nmap`, `Burp Suite`, `BloodHound`, `Mimikatz`, `Responder`
+### Run backend
+```bash
+PYTHONPATH=project/backend uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
 
----
+### Run frontend
+```bash
+streamlit run project/frontend/streamlit_app.py
+```
 
-### 💻 Programming & Scripting
+## 4) API endpoints
 
-**Core Languages**
+- `POST /api/v1/workflow/images`
+- `GET /api/v1/workflow/sessions/{session_id}`
+- `PATCH /api/v1/workflow/sessions/{session_id}/images/{image_id}`
+- `DELETE /api/v1/workflow/sessions/{session_id}/images/{image_id}`
+- `POST /api/v1/workflow/sessions/{session_id}/images/reorder`
+- `POST /api/v1/workflow/sessions/{session_id}/analyze`
+- `POST /api/v1/workflow/sessions/{session_id}/review`
+- `POST /api/v1/workflow/sessions/{session_id}/export?format_name=docx|pdf|markdown`
+- `GET /api/v1/workflow/sessions/{session_id}/exports/{filename}`
 
-* `Python`, `PowerShell`, `Bash`
-* `C`, `C++`, `C#`
-* `Go`, `Rust`
+## 5) Processing details
 
-**Web & Scripting**
+### Image preprocessing
+- Resize while preserving aspect ratio
+- Denoise, sharpen, and normalize contrast (CLAHE)
+- Create compressed processed images and thumbnails
 
-* `JavaScript`, `Node.js`, `PHP`, `Ruby`, `Perl`
+### OCR pipeline
+- OCR runs on preprocessed images using `pytesseract`
+- OCR text saved under `project/data/ocr/<session_id>/`
 
-**Automation & Data**
+### AI pipeline
+- AI invoked after OCR + metadata extraction
+- Only images with `include_for_ai=true` are sent to AI
+- Uses strict JSON prompting and evidence-link constraints
+- Falls back to deterministic local synthesis if API is unavailable
 
-* `SQL`, `NoSQL`, `YAML`, `JSON`, `Regex`
+## 6) Structured JSON output example
 
-**Offensive Development**
+```json
+{
+  "case_title": "Internal Red Team Exercise",
+  "summary": "Potential credential access and lateral movement observed.",
+  "findings": [
+    {
+      "title": "Credential Access activity observed",
+      "severity": "High",
+      "description": "Potential credential dumping behavior identified.",
+      "impact": "Adversaries can escalate account compromise.",
+      "evidence_ids": ["a1b2c3d4e5f6"],
+      "recommendation": "Isolate host and reset affected credentials.",
+      "mitre_techniques": ["TA0006"],
+      "confidence": 0.78
+    }
+  ],
+  "attack_chain": ["Recon", "Credential Access", "Lateral Movement"],
+  "extracted_entities": {
+    "hosts": ["DC01"],
+    "ips": ["10.10.10.5"],
+    "users": ["corp\\alice"],
+    "domains": ["corp.example.com"],
+    "hashes": [],
+    "commands": ["powershell -enc ..."],
+    "tools": ["mimikatz"],
+    "timestamps": ["2026-01-01 12:30:20"],
+    "attack_technique_hints": ["Credential Access"]
+  },
+  "report_sections": {
+    "executive_summary": "...",
+    "methodology": "...",
+    "scope": "...",
+    "technical_details": "...",
+    "recommendations": "...",
+    "appendix": "..."
+  }
+}
+```
 
-* Malware Development Fundamentals
-* Payload Obfuscation & Evasion Techniques
-* Shellcoding & AV/EDR Bypass Concepts
+## 7) Human review and anti-hallucination
 
----
+- Findings must include `evidence_ids`
+- Confidence is lowered when evidence links are missing
+- Reviewer edits are supported before export
 
-### ☁️ Platforms & Environments
+## 8) Input/output examples
 
-* **Windows Security**: Active Directory, Kerberos, LAPS, SCCM, Azure AD
-* **Linux Security**: Privilege Escalation, Exploit Analysis, Post-Exploitation
-* **Cloud Security**: AWS, Azure, GCP (Identity & Misconfiguration Attacks)
-* **Container & CI/CD Security**: Docker, Kubernetes, Pipeline Abuse
+### Input
+- `png`, `jpg`, `jpeg`, `webp`
+- Multi-image batch upload
 
----
+### Output
+- Processed images: `project/data/processed/<session_id>/`
+- OCR text: `project/data/ocr/<session_id>/`
+- Reports: `project/data/reports/<session_id>/report.md|report.docx|report.pdf`
 
-## 🎓 Certifications & Learning Path
+## 9) Tests
 
-* ✅ **CompTIA Security+**
-* ✅ **eJPT** – Junior Penetration Tester
-* 🔒 **eCPPTv3** – Advanced Penetration Testing
-* 🔑 **OSCP** – Offensive Security Certified Professional
-* 🎯 **CRTP** – Certified Red Team Professional (Active Directory)
-* 🏴‍☠️ **CRTE** – Certified Red Team Expert
-* 🕵️ **OSEP** – Offensive Security Experienced Penetration Tester
-* 🧪 **OSED** – Offensive Security Exploit Developer
+```bash
+PYTHONPATH=project/backend pytest -q project/backend/tests
+```
 
----
+## 10) Future development plan
 
-## 📚 Research & Technical Interests
-
-* 🔑 Kerberos Attacks: Pass-the-Ticket, Golden Ticket, Silver Ticket
-* 🧩 Lateral Movement & AD Abuse: DCSync, Pass-the-Hash, Shadow Credentials
-* 🦠 Malware Development, Obfuscation & Evasion
-* 🛰️ Advanced Persistent Threat (APT) Simulation
-* 🧪 Vulnerability Research & Exploit Development
-
----
-
-## 🎯 Professional Focus
-
-* Realistic Red Team operations aligned with modern threat actors
-* Deep specialization in **Active Directory security**
-* Continuous skill development in **exploit development and offensive tooling**
-* Delivering clear, high-impact findings that improve organizational security
+1. Async queue for large batches.
+2. Database-backed sessions and users.
+3. Rich report template editor.
+4. On-image annotation and redaction workflow.
+5. Deeper MITRE technique mapping.
+6. Reviewer approval workflow and audit trail.
